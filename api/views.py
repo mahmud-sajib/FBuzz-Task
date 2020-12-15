@@ -1,11 +1,30 @@
 import requests
-from django.shortcuts import render, redirect
-from .models import InfoUpload, CvFileUpload
-from .forms import InfoUploadForm, CvFileUploadForm
 import datetime
 import json
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import InfoUpload, CvFileUpload
+from .forms import InfoUploadForm, CvFileUploadForm
 
 # Create your views here.
+
+# Authentication Token API View
+def login_view(request):
+    
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        payload = {'username': email, 'password': password}
+        r = requests.post("https://recruitment.fisdev.com/api/login/", data=payload)
+        a = r.json()
+
+        if a["success"] == True:
+            return redirect('home')
+        else:
+            messages.error(request, 'Invalid credentials. Please enter correct username or password.')
+
+    return render(request, 'api/login.html')
 
 def info_upload_view(request):
 

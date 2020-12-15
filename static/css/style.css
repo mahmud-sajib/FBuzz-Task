@@ -1,0 +1,32 @@
+.login-form-container{
+    display: flex; 
+    align-items: center; 
+    height: 100vh; 
+    justify-content: center;
+}
+
+.heading{
+    margin-bottom: 30px;
+}
+
+.form-control {
+    border-radius: 25px;
+    padding: 25px 15px;
+}
+
+.btn-outline-primary{
+    color: black;
+    padding: 12px 50px;
+    border-radius: 25px;
+}
+
+.border{
+    border: 2px solid #ccc !important;
+    padding: 40px;
+}
+
+.error-msg {
+    margin-top: 20px;
+    color: red;
+    font-weight: 500;
+}
