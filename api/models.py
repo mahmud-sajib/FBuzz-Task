@@ -59,18 +59,14 @@ class InfoUpload(models.Model):
  
     on_spot_creation_time = UnixDateTimeField(auto_now_add=True, editable=False)
 
-    # def save(self, *args, **kwargs):
-    #     self.on_spot_creation_time = datetime.datetime.now().timestamp()
-    #     super().save(*args, **kwargs)
-
     def __str__(self):
         return self.name
 
-# class CvFile(models.Model):
-#     tsync_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+class CvFileUpload(models.Model):
+    document = models.FileField(upload_to='documents/') # needs validation
 
-#     def __str__(self):
-#         return self.tsync_id
+    def __str__(self):
+        return f"Cv File"
 
 
 

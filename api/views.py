@@ -1,7 +1,7 @@
 import requests
 from django.shortcuts import render, redirect
-from .models import *
-from .forms import InfoUploadForm
+from .models import InfoUpload, CvFileUpload
+from .forms import InfoUploadForm, CvFileUploadForm
 import datetime
 import json
 
@@ -55,9 +55,6 @@ def info_show(request):
         "on_spot_creation_time": int(obj.on_spot_creation_time.timestamp()) 
     }
 
-    
-
-
     ### Only double quotes are valid in json
 
     print(payload)
@@ -74,3 +71,39 @@ def info_show(request):
     print(r.json())
 
     return render(request, 'api/info.html')
+
+def cv_file_upload(request):
+    if request.method == 'POST':
+        cv_form = CvFileUploadForm(request.POST, request.FILES)
+        if cv_form.is_valid():
+            cv_form.save()
+            return redirect('home')
+    else:
+        cv_form = CvFileUploadForm()
+
+    context = {
+        'cv_form': cv_form
+    }
+    
+    return render(request, 'api/cv-upload.html', context)
+
+def cv_upload_success(request):
+    obj = CvFileUpload.objects.latest('document')
+    cv_file = obj.document.path
+
+    FILE_TOKEN_ID = 583
+    auth_headers = {
+        "Authorization": "Token bee247f2f6df8372ff742011aa34e55349552769"
+    }
+    
+    url = f'https://recruitment.fisdev.com/api/file-object/{FILE_TOKEN_ID}/'
+    print(f"My url: {url}")
+    files = {'file': open(cv_file, 'rb')}
+
+    r = requests.put(url, files=files, headers=auth_headers)
+
+    print(r)
+    print(r.status_code)
+    print(r.json())
+
+    return render(request, 'api/cv-upload-success.html')
