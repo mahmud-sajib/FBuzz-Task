@@ -1,15 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cv Upload</title>
-</head>
-<body>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ cv_form.as_p }}
-        <button type="submit">Upload</button>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="row info-form-container">
+            <div class="col-md-6 border">
+                <h3 class="heading text-center">Submit Your CV</h3> 
+                <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{ cv_form|crispy }}
+                  <button type="submit" class="btn btn-outline-primary">Submit</button>
+                </form>
+                <!-- Error message start -->
+                {% if messages %}
+                <div class="msg">
+                    {% for message in messages %}
+                    <p class="text-center">{{ message }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <!-- Error message end -->
+            </div>
+        </div>
+    </div>
+{% endblock content %}

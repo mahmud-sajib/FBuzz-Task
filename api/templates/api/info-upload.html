@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row info-form-container">
+        <div class="col-md-6 border">
+            <h3 class="heading text-center">Submit Your Information</h3> 
+            <form method="post">
+              {% csrf_token %}
+              {{ form|crispy }}
+              
+              <button type="submit" class="btn btn-outline-primary">Submit</button>
+            </form>
+            <!-- Error message start -->
+            {% if messages %}
+            <div class="error-msg">
+                {% for message in messages %}
+                <p class="text-center">{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <!-- Error message end -->
+        </div>
+    </div>
+</div>
+{% endblock content %}

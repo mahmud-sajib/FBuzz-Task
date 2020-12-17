@@ -5,12 +5,19 @@
     justify-content: center;
 }
 
+.info-form-container{
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    margin: 20px 0;
+}
+
 .heading{
     margin-bottom: 30px;
 }
 
 .form-control {
-    border-radius: 25px;
+    border-radius: 5px;
     padding: 25px 15px;
 }
 
@@ -29,4 +36,42 @@
     margin-top: 20px;
     color: red;
     font-weight: 500;
+}
+
+.msg{
+    margin-top: 20px;
+    font-weight: 500;
+    color: forestgreen;
+}
+
+#div_id_applying_in .form-control{
+    height: 50px;
+    padding: 0 0 0 15px !important;
+}
+
+.asteriskField{
+    color: red;
+}
+
+.text-muted {
+    color: #007BFF!important;
+}
+
+.invalid-feedback{
+    display: block;
+    margin-bottom: 1px;
+}
+
+#id_phone_0{
+    padding: 12px;
+    width: 70%;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+#id_phone_1{
+    padding: 12px;
+    width: 20%;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
 }

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import InfoUpload, CvFileUpload
+from .models import InfoUpload, CvFileUpload, ApiToken, CvFileToken 
 
 # Register your models here.
 class InfoUploadAdmin(admin.ModelAdmin):
@@ -8,4 +8,6 @@ class InfoUploadAdmin(admin.ModelAdmin):
 
 admin.site.register(InfoUpload, InfoUploadAdmin)
 admin.site.register(CvFileUpload)
+admin.site.register(ApiToken)
+admin.site.register(CvFileToken)
 
