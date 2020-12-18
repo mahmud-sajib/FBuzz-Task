@@ -108,7 +108,7 @@ def info_upload_view(request):
     return render(request, 'api/info-upload.html', context)
 
 """This function handles cv upload of a user."""
-def cv_file_upload(request):
+def cv_file_upload_view(request):
 
     cv_form = CvFileUploadForm(request.POST, request.FILES)
     

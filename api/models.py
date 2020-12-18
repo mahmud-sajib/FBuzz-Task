@@ -78,7 +78,7 @@ class CvFileToken(models.Model):
         return self.cv_token
 
 class CvFileUpload(models.Model):
-    document = models.FileField(upload_to='documents/', validators=[validate_file_size, FileExtensionValidator(allowed_extensions=['pdf'])]) # needs validation
+    document = models.FileField(upload_to='documents/', validators=[validate_file_size, FileExtensionValidator(allowed_extensions=['pdf'])])
 
     def __str__(self):
         return f"Cv File"
