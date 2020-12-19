@@ -5,15 +5,16 @@ from django.core.validators import MinValueValidator, MaxValueValidator, RegexVa
 from django_unixdatetimefield import UnixDateTimeField
 from .validators import validate_file_size
 
-
 # Create your models here.
 
+"""ApiToken model"""
 class ApiToken(models.Model):
     api_token = models.CharField(max_length=256, editable=False)
     
     def __str__(self):
         return self.api_token
 
+"""InfoUpload model"""
 class InfoUpload(models.Model):
 
     APPLYING_DEPARTMENT = (
@@ -71,12 +72,14 @@ class InfoUpload(models.Model):
     def __str__(self):
         return self.name
 
+"""CvFileToken model"""
 class CvFileToken(models.Model):
     cv_token = models.CharField(max_length=256, editable=False)
     
     def __str__(self):
         return self.cv_token
 
+"""CvFileUpload model"""
 class CvFileUpload(models.Model):
     document = models.FileField(upload_to='documents/', validators=[validate_file_size, FileExtensionValidator(allowed_extensions=['pdf'])])
 

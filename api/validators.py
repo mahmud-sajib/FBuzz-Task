@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 
+"""This function validates uploaded file size"""
 def validate_file_size(value):
     filesize= value.size
     

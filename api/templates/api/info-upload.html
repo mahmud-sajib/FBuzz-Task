@@ -5,13 +5,15 @@
 <div class="container">
     <div class="row info-form-container">
         <div class="col-md-6 border">
-            <h3 class="heading text-center">Submit Your Information</h3> 
+            <h3 class="heading text-center">Submit Your Information</h3>
+            <!-- Info upload form start -->  
             <form method="post">
               {% csrf_token %}
               {{ form|crispy }}
-              
               <button type="submit" class="btn btn-outline-primary">Submit</button>
             </form>
+            <!-- Info upload form end --> 
+
             <!-- Error message start -->
             {% if messages %}
             <div class="error-msg">

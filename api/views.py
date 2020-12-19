@@ -25,6 +25,7 @@ def login_view(request):
         
         # Get response in json format
         response = response.json()
+        print(response)
 
         # If it's a valid response save token and redirect user else show error message
         if response["success"] == True:
@@ -84,11 +85,12 @@ def info_upload_view(request):
             }
 
             # POST user information to api 3.2
-            url = "https://recruitment.fisdev.com/api/v0/recruiting-entities/"
+            url = "https://recruitment.fisdev.com/api/v1/recruiting-entities/"
             response = requests.post(url, json=payload, headers=auth_headers)
             
             # Get response in json format
             response = response.json()
+            print(response)
 
             # If it's a valid response save file token and redirect user else show error message
             if response["success"] == True:
